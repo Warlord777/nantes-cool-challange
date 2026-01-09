@@ -61,3 +61,10 @@ h1 {
 .zimbabwebut:hover {
     background-image: url('../../assets/images/zimbabwesel.png');
 }
+
+.midcenter {
+  display: flex;
+  justify-content: center;  
+  align-items: center;      
+  height: 100vh;            
+}
