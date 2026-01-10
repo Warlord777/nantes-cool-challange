@@ -8,21 +8,34 @@
 </head>
 <body>
 
+
 <div class="menutab">
 <button type="button" onclick="myFunction()" class="tabbutton">Home</button>
-<button type="button" onclick="myFunction()" class="tabbutton">Map</button>
+<button type="button" onclick="transitionMap()" class="tabbutton">Map</button>
 </div>
 
-<h1>The Southern African Map</h1>
-<div class="home_main_paragraph">
+<script>
+    function transitionMap () {
+        const mappage = document.getElementById('mapbox');
+        const homepage = document.getElementById('homepage');
+        mappage.classList.add ('map')
+        mappage.classList.remove('hidden')
+        homepage.classList.toggle('hidden')
+    }
+</script>
+
+
+<div class="home_main_paragraph" id="homepage">
+    <h1>The Southern African Map</h1>
     <p>This is my cool project. a Detailed map of Southern Africa that one can interact. Click on counties to zoom in and see further information.</p>
     <p>counties on the map are South Africa, Eswatini, Lesotho, Mozambique, Zimbabwe, Botswana and Namibia</p>
 </div>
 
 
-<div class="midcenter">
-<button type="button" onclick="myFunction()" class="zimbabwebut">
-
+<div class="hidden" id="mapbox">
+<button type="button" onclick="myFunction()" class="zimbabwebut mappoint">
+</button>
+<button type="button" onclick="myFunction()" class="sabut mappoint">
 </button>
 </div>
 
