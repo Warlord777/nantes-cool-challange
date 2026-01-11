@@ -16,36 +16,51 @@
 
 <script>
 
+    document.addEventListener('DOMContentLoaded', () => {
+        const mappage = document.getElementById('mapbox');
+        const mapinfobox = document.getElementById('mapinfo');
+        const homepage = document.getElementById('homepage');
+
+        mappage.classList.add('hidden');
+        mapinfobox.classList.add('hidden');
+
+    })
+
     const body = document.getElementById('body')
     
     function transitionMap () {
         const mappage = document.getElementById('mapbox');
         const homepage = document.getElementById('homepage');
-        mappage.classList.add ('map')
-        mappage.classList.remove('hidden')
-        homepage.classList.add('hidden')
-        homepage.classList.remove('homepage')
+        const mapinfobox = document.getElementById('mapinfo');
+        mappage.classList.remove('hidden');
+        mapinfobox.classList.remove('hidden');
+        homepage.classList.add('hidden');
     }
 
     function transitionHome () {
         const mappage = document.getElementById('mapbox');
         const homepage = document.getElementById('homepage');
-        mappage.classList.add ('hidden')
-        mappage.classList.remove('map')
-        homepage.classList.add('homepage')
-        homepage.classList.remove('hidden')
+        const mapinfobox = document.getElementById('mapinfo');
+        mappage.classList.add ('hidden');
+        mapinfobox.classList.add('hidden');
+        homepage.classList.remove('hidden');
     }
 
     function countryClick(element) {
         const countries = ["idSA", "idNamibia", "idBotswana", "idMozambique", "idZimbabwe"];
+        const countryNames = ["South Africa", "Namibia", "Botswana", "Mozambique", "Zimbabwe"];
+        let index = 0;
         countries.forEach(country => {
             if (element.id != country) {
                 const countryElement = document.getElementById (country);
                 countryElement.classList.add ('hidden');
+                index ++;
+            }
+            else {
+                const countryNameDisplay = document.getElementById("mapHeader");
+                countryNameDisplay.textContent = countryNames[index];
             }
         });
-
-
     }
 </script>
 
@@ -56,8 +71,17 @@
     <p>counties on the map are South Africa, Eswatini, Lesotho, Mozambique, Zimbabwe, Botswana and Namibia</p>
 </div>
 
+<div class= "mapinfo" id="mapinfo">
+    <h1 id="mapHeader">Click on any country on the map.</h1>
+    <p id="countryLanguage"></p>
+    <p id="countryCapital"></p>
+    <p id="countryCurrency"></p>
+    <p id="countryPopulation"></p>
+    <p id="countryInfromation"></p>
 
-<div class="hidden" id="mapbox">
+</div>
+
+<div class="mapbox" id="mapbox">
 <button type="button" onclick="countryClick(this)" class="sabut mappoint" id="idSA">
 </button>
 <button type="button" onclick="countryClick(this)" class="namibiabut mappoint" id="idNamibia">
@@ -69,6 +93,8 @@
 <button type="button" onclick="countryClick(this)" class="zimbabwebut mappoint" id="idZimbabwe">
 </button>
 </div>
+
+
 
 
 </body>
