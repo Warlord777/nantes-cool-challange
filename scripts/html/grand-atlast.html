@@ -32,6 +32,8 @@
         const mappage = document.getElementById('mapbox');
         const homepage = document.getElementById('homepage');
         const mapinfobox = document.getElementById('mapinfo');
+        const mapbackButton = document.getElementById('mapBackButton');
+        mapbackButton.classList.add('hidden');
         mappage.classList.remove('hidden');
         mapinfobox.classList.remove('hidden');
         homepage.classList.add('hidden');
@@ -49,6 +51,7 @@
     function countryClick(element) {
         const countries = ["idSA", "idNamibia", "idBotswana", "idMozambique", "idZimbabwe"];
         const countryNames = ["South Africa", "Namibia", "Botswana", "Mozambique", "Zimbabwe"];
+        const mapbackButton = document.getElementById('mapBackButton');
         let index = 0;
         countries.forEach(country => {
             if (element.id != country) {
@@ -59,7 +62,20 @@
             else {
                 const countryNameDisplay = document.getElementById("mapHeader");
                 countryNameDisplay.textContent = countryNames[index];
+                mapbackButton.classList.remove('hidden');
             }
+        });
+    }
+
+    function backClick () {
+        const countries = ["idSA", "idNamibia", "idBotswana", "idMozambique", "idZimbabwe"];
+         countries.forEach(country => {
+                const countryElement = document.getElementById (country);
+                countryElement.classList.remove ('hidden');
+                const countryNameDisplay = document.getElementById("mapHeader");
+                countryNameDisplay.textContent = "Click on any country on the map.";
+                const mapbackButton = document.getElementById('mapBackButton');
+                mapbackButton.classList.add('hidden');
         });
     }
 </script>
@@ -78,6 +94,8 @@
     <p id="countryCurrency"></p>
     <p id="countryPopulation"></p>
     <p id="countryInfromation"></p>
+
+    <button type="button" onclick="backClick()" class="generalbutton " id="mapBackButton">Back</button>
 
 </div>
 

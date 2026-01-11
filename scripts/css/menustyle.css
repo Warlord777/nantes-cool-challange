@@ -52,8 +52,8 @@ h1 {
   top: 28.4%;
   left: 70.2%;
   background-color: rgba(255, 255, 255, 0);
-  width: 255px;
-  height: 236px;
+  width: 259px;
+  height: 267px;
   border: none;
   background-image: url('../../assets/images/zimbabwe.png');
   background-size: contain;
@@ -119,7 +119,7 @@ h1 {
 
 .mozambique {
   top: 0%;
-  left: 89.8%;
+  left: 90.2%;
   background-color: rgba(255, 255, 255, 0);
   width: 346px;
   height: 561px;
@@ -150,6 +150,22 @@ h1 {
 
 .mapinfo {
   width: 20%;
+}
+
+.generalbutton {
+  border: none;
+  background-color: rgb(224, 57, 57);
+  color: white;
+  text-align: center;
+  height: 70px;
+  width: 100px;
+  margin-left: 10px;
+  
+  cursor: pointer;
+}
+
+.generalbutton:hover {
+    background-color: rgb(170, 44, 44);
 }
 
 .hidden {
