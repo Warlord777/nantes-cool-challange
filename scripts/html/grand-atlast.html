@@ -16,15 +16,25 @@
 
 <script>
 
+    const globalvariables = {
+        mappage: null,
+        homepage: null,
+        mapBackButton: null,
+        mapinfobox: null
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         const mappage = document.getElementById('mapbox');
         const mapinfobox = document.getElementById('mapinfo');
         const homepage = document.getElementById('homepage');
+        const mapbackButton = document.getElementById('mapBackButton');
 
         mappage.classList.add('hidden');
         mapinfobox.classList.add('hidden');
 
+
     })
+
 
     const body = document.getElementById('body')
     
@@ -51,6 +61,7 @@
     function countryClick(element) {
         const countries = ["idSA", "idNamibia", "idBotswana", "idMozambique", "idZimbabwe"];
         const countryNames = ["South Africa", "Namibia", "Botswana", "Mozambique", "Zimbabwe"];
+        const countryCurrency = ["Currency: Rand", "Currency: Namibian Dollar", "Currency: Pula", "Currency: Metical", "Currency: Zimbabwean Dollar"];
         const mapbackButton = document.getElementById('mapBackButton');
         let index = 0;
         countries.forEach(country => {
@@ -61,7 +72,9 @@
             }
             else {
                 const countryNameDisplay = document.getElementById("mapHeader");
+                const countryCurrencyDisplay = document.getElementById("countryCurrency");
                 countryNameDisplay.textContent = countryNames[index];
+                countryCurrencyDisplay.textContent = countryCurrency[index];
                 mapbackButton.classList.remove('hidden');
             }
         });
@@ -72,8 +85,12 @@
          countries.forEach(country => {
                 const countryElement = document.getElementById (country);
                 countryElement.classList.remove ('hidden');
+
                 const countryNameDisplay = document.getElementById("mapHeader");
+                const countryCurrencyDisplay = document.getElementById("countryCurrency");
                 countryNameDisplay.textContent = "Click on any country on the map.";
+                countryCurrencyDisplay.textContent = "";
+
                 const mapbackButton = document.getElementById('mapBackButton');
                 mapbackButton.classList.add('hidden');
         });
