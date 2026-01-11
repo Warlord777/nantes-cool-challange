@@ -10,7 +10,7 @@
 
 
 <div class="menutab">
-<button type="button" onclick="myFunction()" class="tabbutton">Home</button>
+<button type="button" onclick="transitionHome()" class="tabbutton">Home</button>
 <button type="button" onclick="transitionMap()" class="tabbutton">Map</button>
 </div>
 
@@ -24,7 +24,28 @@
         mappage.classList.add ('map')
         mappage.classList.remove('hidden')
         homepage.classList.add('hidden')
-        mappage.classList.remove('homepage')
+        homepage.classList.remove('homepage')
+    }
+
+    function transitionHome () {
+        const mappage = document.getElementById('mapbox');
+        const homepage = document.getElementById('homepage');
+        mappage.classList.add ('hidden')
+        mappage.classList.remove('map')
+        homepage.classList.add('homepage')
+        homepage.classList.remove('hidden')
+    }
+
+    function countryClick(element) {
+        const countries = ["idSA", "idNamibia", "idBotswana", "idMozambique", "idZimbabwe"];
+        countries.forEach(country => {
+            if (element.id != country) {
+                const countryElement = document.getElementById (country);
+                countryElement.classList.add ('hidden');
+            }
+        });
+
+
     }
 </script>
 
@@ -37,13 +58,15 @@
 
 
 <div class="hidden" id="mapbox">
-<button type="button" onclick="myFunction()" class="zimbabwebut mappoint">
+<button type="button" onclick="countryClick(this)" class="sabut mappoint" id="idSA">
 </button>
-<button type="button" onclick="myFunction()" class="sabut mappoint">
+<button type="button" onclick="countryClick(this)" class="namibiabut mappoint" id="idNamibia">
 </button>
-<button type="button" onclick="myFunction()" class="namibiabut mappoint">
+<button type="button" onclick="countryClick(this)" class="botswanabut mappoint" id="idBotswana">
 </button>
-<button type="button" onclick="myFunction()" class="botswanabut mappoint">
+<button type="button" onclick="countryClick(this)" class="mozambique mappoint" id="idMozambique">
+</button>
+<button type="button" onclick="countryClick(this)" class="zimbabwebut mappoint" id="idZimbabwe">
 </button>
 </div>
 

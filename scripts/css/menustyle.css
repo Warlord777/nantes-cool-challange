@@ -49,8 +49,8 @@ h1 {
 }
 
 .zimbabwebut {
-  top: 0%;
-  left: 70.4%;
+  top: 28.4%;
+  left: 70.2%;
   background-color: rgba(255, 255, 255, 0);
   width: 255px;
   height: 236px;
@@ -67,7 +67,7 @@ h1 {
 }
 
 .sabut {
-  top: 36%;
+  top: 64.5%;
   left: 35%;
   background-color: rgba(255, 255, 255, 0);
   width: 534px;
@@ -84,7 +84,7 @@ h1 {
 }
 
 .botswanabut {
-  top: 12%;
+  top: 40.5%;
   left: 49%;
   background-color: rgba(255, 255, 255, 0);
   width: 306px;
@@ -101,7 +101,7 @@ h1 {
 }
 
 .namibiabut {
-  top: 7.7%;
+  top: 36.2%;
   left: 16%;
   background-color: rgba(255, 255, 255, 0);
   width: 441px;
@@ -117,6 +117,23 @@ h1 {
     background-image: url('../../assets/images/namibiasel.png');
 }
 
+.mozambique {
+  top: 0%;
+  left: 89.8%;
+  background-color: rgba(255, 255, 255, 0);
+  width: 346px;
+  height: 561px;
+  border: none;
+  background-image: url('../../assets/images/mozambique.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.mozambique:hover {
+    background-image: url('../../assets/images/mozambiquesel.png');
+}
+
 
 .mappoint {
   position:absolute;
@@ -124,9 +141,9 @@ h1 {
 }
 
 #mapbox {
+  margin-top: 50px;
   position: relative;
-  background-color: #6AD4E7;
-  left: 25%;
+  left: 22.5%;
   width: 800px;
   height: 600px;
 }
