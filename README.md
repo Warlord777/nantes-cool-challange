@@ -8,7 +8,7 @@ NANTES'S COOL SOUTHERN AFRICAN MAP.
 
 2. WHAT DOES THE PROJECT DO.
 
-    Users click on a country in the map section to view detial of that country.
+    Users click on a country in the map section to view details of that country.
 
 3. FEATURES
     * Interactive map
