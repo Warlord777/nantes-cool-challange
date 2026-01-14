@@ -142,6 +142,9 @@
         globalvariables.mapinfobox.classList.remove('hidden');
         globalvariables.homepage.classList.add('hidden');
         globalvariables.debugbox.classList.add("hidden")
+        if (globalvariables.countrySelected) {
+            backClick ();
+        }
     }
 
     function transitionHome () {
