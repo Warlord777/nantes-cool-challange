@@ -12,90 +12,9 @@
 <div class="menutab">
 <button type="button" onclick="transitionHome()" class="tabbutton">Home</button>
 <button type="button" onclick="transitionMap()" class="tabbutton">Map</button>
+<button type="button" onclick="transitionDebug ()" class="tabbutton">Debug</button>
 </div>
 
-<script>
-
-    const globalvariables = {
-        mappage: null,
-        homepage: null,
-        mapBackButton: null,
-        mapinfobox: null
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const mappage = document.getElementById('mapbox');
-        const mapinfobox = document.getElementById('mapinfo');
-        const homepage = document.getElementById('homepage');
-        const mapbackButton = document.getElementById('mapBackButton');
-
-        mappage.classList.add('hidden');
-        mapinfobox.classList.add('hidden');
-
-
-    })
-
-
-    const body = document.getElementById('body')
-    
-    function transitionMap () {
-        const mappage = document.getElementById('mapbox');
-        const homepage = document.getElementById('homepage');
-        const mapinfobox = document.getElementById('mapinfo');
-        const mapbackButton = document.getElementById('mapBackButton');
-        mapbackButton.classList.add('hidden');
-        mappage.classList.remove('hidden');
-        mapinfobox.classList.remove('hidden');
-        homepage.classList.add('hidden');
-    }
-
-    function transitionHome () {
-        const mappage = document.getElementById('mapbox');
-        const homepage = document.getElementById('homepage');
-        const mapinfobox = document.getElementById('mapinfo');
-        mappage.classList.add ('hidden');
-        mapinfobox.classList.add('hidden');
-        homepage.classList.remove('hidden');
-    }
-
-    function countryClick(element) {
-        const countries = ["idSA", "idNamibia", "idBotswana", "idMozambique", "idZimbabwe"];
-        const countryNames = ["South Africa", "Namibia", "Botswana", "Mozambique", "Zimbabwe"];
-        const countryCurrency = ["Currency: Rand", "Currency: Namibian Dollar", "Currency: Pula", "Currency: Metical", "Currency: Zimbabwean Dollar"];
-        const mapbackButton = document.getElementById('mapBackButton');
-        let index = 0;
-        countries.forEach(country => {
-            if (element.id != country) {
-                const countryElement = document.getElementById (country);
-                countryElement.classList.add ('hidden');
-                index ++;
-            }
-            else {
-                const countryNameDisplay = document.getElementById("mapHeader");
-                const countryCurrencyDisplay = document.getElementById("countryCurrency");
-                countryNameDisplay.textContent = countryNames[index];
-                countryCurrencyDisplay.textContent = countryCurrency[index];
-                mapbackButton.classList.remove('hidden');
-            }
-        });
-    }
-
-    function backClick () {
-        const countries = ["idSA", "idNamibia", "idBotswana", "idMozambique", "idZimbabwe"];
-         countries.forEach(country => {
-                const countryElement = document.getElementById (country);
-                countryElement.classList.remove ('hidden');
-
-                const countryNameDisplay = document.getElementById("mapHeader");
-                const countryCurrencyDisplay = document.getElementById("countryCurrency");
-                countryNameDisplay.textContent = "Click on any country on the map.";
-                countryCurrencyDisplay.textContent = "";
-
-                const mapbackButton = document.getElementById('mapBackButton');
-                mapbackButton.classList.add('hidden');
-        });
-    }
-</script>
 
 
 <div class="home_main_paragraph" id="homepage">
@@ -129,8 +48,142 @@
 </button>
 </div>
 
+<div id="debugBox">
+    <p id="debugCountry"></p>
+    <p id="debugSelected"></p>
+</div>
+
 
 
 
 </body>
+
+<script>
+
+    const globalvariables = {
+        mappage: null,
+        homepage: null,
+        mapBackButton: null,
+        mapinfobox: null,
+        debugbox: null,
+        mapCountrybuttons: [],
+        countrySelected: false
+    };
+
+    const countryInfo = {
+        idSA: {
+            name: "South Africa",
+            capital: "Pretoria",
+            currency: "Rand",
+        },
+        idNamibia: {
+            name: "Namibia",
+            capital: "Windhoek",
+            currency: "Namibian Dollar"
+        },
+        idBotswana: {
+            name: "Botswana",
+            capital: "Gaberone",
+            currency: "Pula"
+        },
+        idMozambique: {
+            name: "Mozambique",
+            capital: "Maputo",
+            currency: "Metical"
+        },
+        idZimbabwe: {
+            name: "Zimbabwe",
+            capital: "Harare",
+            currency: "Zimbabwean Dollar"
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        globalvariables.homepage = document.getElementById('homepage');
+        globalvariables.mappage = document.getElementById('mapbox');
+        globalvariables.mapinfobox = document.getElementById('mapinfo');
+        globalvariables.mapBackButton = document.getElementById('mapBackButton');
+        globalvariables.mapCountrybuttons = Array.from(document.querySelectorAll(".mappoint"));
+        globalvariables.debugbox = document.getElementById('debugBox')
+        document.getElementById('debugCountry').textContent = "debug";
+
+        globalvariables.mappage.classList.add('hidden');
+        globalvariables.mapinfobox.classList.add('hidden');
+        globalvariables.debugbox.classList.add("hidden");
+
+
+    })
+
+
+    const body = document.getElementById('body')
+    
+    function transitionMap () {
+        globalvariables.mapBackButton.classList.add('hidden');
+        globalvariables.mappage.classList.remove('hidden');
+        globalvariables.mapinfobox.classList.remove('hidden');
+        globalvariables.homepage.classList.add('hidden');
+        globalvariables.debugbox.classList.add("hidden")
+    }
+
+    function transitionHome () {
+        globalvariables.mappage.classList.add('hidden');
+        globalvariables.mapinfobox.classList.add('hidden');
+        globalvariables.homepage.classList.remove('hidden');
+        globalvariables.debugbox.classList.add("hidden");
+        if (globalvariables.countrySelected) {
+            backClick ();
+        }
+    }
+
+    function transitionDebug () {
+        globalvariables.mapBackButton.classList.add('hidden');
+        globalvariables.mappage.classList.add('hidden');
+        globalvariables.homepage.classList.add('hidden');
+        globalvariables.mapinfobox.classList.add('hidden');
+        globalvariables.debugbox.classList.remove('hidden');
+        if (globalvariables.countrySelected) {
+            backClick ();
+        }
+    }
+
+    /* Map Interaction */
+
+    function countryClick(element) {
+        const selectedId = element.id;
+        const info = countryInfo[selectedId];
+        document.getElementById('debugCountry').textContent = "country selected: " + info.name;
+        
+
+        globalvariables.mapCountrybuttons.forEach(country => {
+            country.classList.toggle("hidden", country.id !== selectedId)
+        });
+
+        document.getElementById("mapHeader").textContent = info.name;
+        document.getElementById("countryCapital").textContent = "Capital: " + info.capital;
+        document.getElementById("countryCurrency").textContent = "Currency: " +info.currency;
+        globalvariables.countrySelected = true;
+
+        globalvariables.mapBackButton.classList.remove ('hidden');
+
+    }
+
+    function backClick () {
+        const countries = ["idSA", "idNamibia", "idBotswana", "idMozambique", "idZimbabwe"];
+         countries.forEach(country => {
+                const countryElement = document.getElementById (country);
+                countryElement.classList.remove ('hidden');
+
+                const countryNameDisplay = document.getElementById("mapHeader");
+                const countryCurrencyDisplay = document.getElementById("countryCurrency");
+                countryNameDisplay.textContent = "Click on any country on the map.";
+                countryCurrencyDisplay.textContent = "";
+                document.getElementById("countryCapital").textContent = "";
+                document.getElementById("countryCurrency").textContent = "";
+
+                const mapbackButton = document.getElementById('mapBackButton');
+                mapbackButton.classList.add('hidden');
+        });
+    }
+</script>
 </html>
