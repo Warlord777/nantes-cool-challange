@@ -75,26 +75,33 @@
             name: "South Africa",
             capital: "Pretoria",
             currency: "Rand",
+            population: "64 million (2024)",
+            keyInfo: "South Africa is one of the largest economies on the continent and the largest in southern Africa. The country is home to multiple cultures that calls this place home"
         },
         idNamibia: {
             name: "Namibia",
             capital: "Windhoek",
-            currency: "Namibian Dollar"
+            currency: "Namibian Dollar",
+            population: "3 million (2024)",
+            keyInfo: "Namibia gained independance from South Africa in 1990. Before that Naimibia was called South-West Africa and was a mandate of South Africa, which in turn was given ownership of the region by the british from the German Empire in the First World War"
         },
         idBotswana: {
             name: "Botswana",
             capital: "Gaberone",
-            currency: "Pula"
+            currency: "Pula",
+            population: "2.5 million (2024)"
         },
         idMozambique: {
             name: "Mozambique",
             capital: "Maputo",
-            currency: "Metical"
+            currency: "Metical",
+            population: "34.6 million (2024)"
         },
         idZimbabwe: {
             name: "Zimbabwe",
             capital: "Harare",
-            currency: "Zimbabwean Dollar"
+            currency: "Zimbabwean Dollar",
+            population: "16.6 million (2024s)"
         }
     };
 
@@ -161,7 +168,8 @@
 
         document.getElementById("mapHeader").textContent = info.name;
         document.getElementById("countryCapital").textContent = "Capital: " + info.capital;
-        document.getElementById("countryCurrency").textContent = "Currency: " +info.currency;
+        document.getElementById("countryCurrency").textContent = "Currency: " + info.currency;
+        document.getElementById("countryPopulation").textContent = "Population: " + info.population;
         globalvariables.countrySelected = true;
 
         globalvariables.mapBackButton.classList.remove ('hidden');
@@ -170,6 +178,7 @@
 
     function backClick () {
         const countries = ["idSA", "idNamibia", "idBotswana", "idMozambique", "idZimbabwe"];
+        globalvariables.countrySelected = false;
          countries.forEach(country => {
                 const countryElement = document.getElementById (country);
                 countryElement.classList.remove ('hidden');
@@ -180,6 +189,7 @@
                 countryCurrencyDisplay.textContent = "";
                 document.getElementById("countryCapital").textContent = "";
                 document.getElementById("countryCurrency").textContent = "";
+                 document.getElementById("countryPopulation").textContent = "";
 
                 const mapbackButton = document.getElementById('mapBackButton');
                 mapbackButton.classList.add('hidden');
