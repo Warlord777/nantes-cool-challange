@@ -29,6 +29,7 @@
     <p id="countryCapital"></p>
     <p id="countryCurrency"></p>
     <p id="countryPopulation"></p>
+    <p id="countryGovernment"></p>
     <p id="countryInfromation"></p>
 
     <button type="button" onclick="backClick()" class="generalbutton " id="mapBackButton">Back</button>
@@ -36,17 +37,19 @@
 </div>
 
 <div class="mapbox" id="mapbox">
-<button type="button" onclick="countryClick(this)" class="sabut mappoint" id="idSA">
-</button>
-<button type="button" onclick="countryClick(this)" class="namibiabut mappoint" id="idNamibia">
-</button>
-<button type="button" onclick="countryClick(this)" class="botswanabut mappoint" id="idBotswana">
-</button>
-<button type="button" onclick="countryClick(this)" class="mozambique mappoint" id="idMozambique">
-</button>
-<button type="button" onclick="countryClick(this)" class="zimbabwebut mappoint" id="idZimbabwe">
-</button>
+    <button type="button" onclick="countryClick(this)" class="sabut mappoint" id="idSA">
+    </button>
+    <button type="button" onclick="countryClick(this)" class="namibiabut mappoint" id="idNamibia">
+    </button>
+    <button type="button" onclick="countryClick(this)" class="botswanabut mappoint" id="idBotswana">
+    </button>
+    <button type="button" onclick="countryClick(this)" class="mozambique mappoint" id="idMozambique">
+    </button>
+    <button type="button" onclick="countryClick(this)" class="zimbabwebut mappoint" id="idZimbabwe">
+    </button>
 </div>
+
+
 
 <div id="debugBox">
     <p id="debugCountry"></p>
@@ -76,6 +79,7 @@
             capital: "Pretoria",
             currency: "Rand",
             population: "64 million (2024)",
+            government: "Constitutional Republic",
             keyInfo: "South Africa is one of the largest economies on the continent and the largest in southern Africa. The country is home to multiple cultures that calls this place home"
         },
         idNamibia: {
@@ -83,25 +87,32 @@
             capital: "Windhoek",
             currency: "Namibian Dollar",
             population: "3 million (2024)",
-            keyInfo: "Namibia gained independance from South Africa in 1990. Before that Naimibia was called South-West Africa and was a mandate of South Africa, which in turn was given ownership of the region by the british from the German Empire in the First World War"
+            government: "Constitutional Republic",
+            keyInfo: "Namibia gained independance from South Africa in 1990. Before that Naimibia was called South-West Africa and was a mandate of South Africa, which in turn was given ownership of the region by the british from the German Empire in the First World War."
         },
         idBotswana: {
             name: "Botswana",
             capital: "Gaberone",
             currency: "Pula",
-            population: "2.5 million (2024)"
+            population: "2.5 million (2024)",
+            government: "Parliamentary Republic",
+            keyInfo: "Botswana is a sparsely populated country and half desert. Many South Africans have came to call this small country their home. Crime here is harshly punished."
         },
         idMozambique: {
             name: "Mozambique",
             capital: "Maputo",
             currency: "Metical",
-            population: "34.6 million (2024)"
+            population: "34.6 million (2024)",
+            government: "Constitutional Republic",
+            keyInfo: "One of the few portuguese speaking african countries, esspecially in southern Africa, Mozambique has gained independace from Portugual by means of a colonial war that ended in a cease fire in 1964. Independence was formaly negotiated on 8 September 1974."
         },
         idZimbabwe: {
             name: "Zimbabwe",
             capital: "Harare",
             currency: "Zimbabwean Dollar",
-            population: "16.6 million (2024s)"
+            population: "16.6 million (2024s)",
+            government: "Republic",
+            keyInfo: "Zimbabwe was once a british colony that was founded after the formation of the Union of South Africa. It adopted the name of Rhodesia in honor of Cecil John Rhodes; the once Prime Minister of the Cape Colony. Rhodesia declared it self independant in 1965. After which due to internal strife later became Zimbabwe."
         }
     };
 
@@ -170,6 +181,8 @@
         document.getElementById("countryCapital").textContent = "Capital: " + info.capital;
         document.getElementById("countryCurrency").textContent = "Currency: " + info.currency;
         document.getElementById("countryPopulation").textContent = "Population: " + info.population;
+        document.getElementById("countryGovernment").textContent = "Government Type: " + info.government;
+        document.getElementById("countryInfromation").textContent = info.keyInfo;
         globalvariables.countrySelected = true;
 
         globalvariables.mapBackButton.classList.remove ('hidden');
@@ -189,7 +202,9 @@
                 countryCurrencyDisplay.textContent = "";
                 document.getElementById("countryCapital").textContent = "";
                 document.getElementById("countryCurrency").textContent = "";
-                 document.getElementById("countryPopulation").textContent = "";
+                document.getElementById("countryPopulation").textContent = "";
+                document.getElementById("countryGovernment").textContent = "";
+                document.getElementById("countryInfromation").textContent = "";
 
                 const mapbackButton = document.getElementById('mapBackButton');
                 mapbackButton.classList.add('hidden');
