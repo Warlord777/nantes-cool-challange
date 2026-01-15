@@ -2,6 +2,8 @@
 
 NANTES'S COOL SOUTHERN AFRICAN MAP.
 
+This is the project i have done for my cool challange.
+
 1. CORE IDEA.
 
     This is a basic map app that gives people access to some basic information of Southern Africa in a more interactive manner.
